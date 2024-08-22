@@ -1,0 +1,12 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    environment:
+      xcode: latest  # Используемая версия Xcode
+    scripts:
+      - name: Install CocoaPods
+        script: pod install  # Установка зависимостей CocoaPods
+      - name: Build for iOS
+        script: xcodebuild -workspace MyApp.xcworkspace -scheme MyApp -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' build  # Сборка проекта
+    artifacts:
+      - build/ios/Debug-iphonesimulator/MyApp.app  # Путь к собранному приложению
